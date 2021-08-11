@@ -26,7 +26,6 @@ const optimization = () => {
 module.exports = {
 	context: path.resolve(__dirname, 'src'),
 	mode: "development",
-	// entry: "./index.js",
 	entry: {
 		index: ['babel-polyfill', './index.js']
 	},
@@ -86,14 +85,14 @@ module.exports = {
 					}
 				},
 			},
-			// {
-			// 	test: /\.(jpg|jpeg|png|svg)/,
-			// 	use: ["file-loader"]
-			// },
-			// {
-			// 	test: /\.(woff|woff2)/,
-			// 	use: ["file-loader"]
-			// }
+			{
+				test: /\.(jpg|jpeg|png|svg)/,
+				use: ["file-loader"]
+			},
+			{
+				test: /\.(woff|woff2)/,
+				use: ["file-loader"]
+			}
 		]
 	}
 };

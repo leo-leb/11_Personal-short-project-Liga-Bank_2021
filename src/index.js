@@ -13,15 +13,6 @@ const store = createStore(
 	composeWithDevTools()
 );
 
-
-// ReactDOM.render(
-// 	<App 
-// 		history={Operations}
-// 		currencyList={Currencys}
-// 	/>,
-// 	document.querySelector('#root')
-// );
-
 ReactDOM.render(
 	<Provider store={store}>
 		<App 
