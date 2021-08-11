@@ -1,0 +1,46 @@
+.nav {
+	font-weight: normal;
+	font-style: normal;
+}
+
+.header__nav {
+	flex-grow: 1;
+}
+
+.nav-list {
+	list-style-type: none;
+
+	font-size: 16px;
+}
+
+.header__nav-list {
+	padding: 0 55px;
+
+	display: flex;
+	flex-direction: row;
+}
+
+.header__nav-list .nav-list__item-wrapper {
+	&:not(:last-child) {
+		padding-right: 28px;
+	}
+}
+
+.footer__nav-list {
+	width: 150px;
+	padding-top: 8px;
+}
+
+.footer__nav-list .nav-list__item-wrapper {
+	&:not(:last-child) {
+		margin-bottom: 12px;
+	}
+}
+
+.nav-list__item-link {
+	color: $black-middle;
+}
+
+.nav-list__item-link--active {
+	color: $blue;
+}

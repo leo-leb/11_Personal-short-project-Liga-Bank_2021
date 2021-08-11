@@ -1,0 +1,31 @@
+.header {
+	width: 1170px;
+	margin: 0 auto;
+	padding: 26px 0 34px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.auth {
+	position: relative;
+
+	font-size: 16px;
+	color: $black-middle;
+
+	&::before {
+		position: absolute;
+		top: 50%;
+		right: 100%;
+		transform: translate(-10px, -50%);
+	
+		width: 20px;
+		height: 22px;
+
+		content: "";
+	
+		background-image: url('./images/auth.svg');
+		background-repeat: no-repeat;
+	}
+}

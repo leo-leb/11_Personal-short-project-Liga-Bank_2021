@@ -1,0 +1,5 @@
+# Файлы редактора
+.git
+.vscode
+node_modules/
+build/

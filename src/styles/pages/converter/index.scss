@@ -1,0 +1,456 @@
+.converter-page__index {
+	margin: 0 auto;
+}
+
+.credit {
+	background-color: $blue;
+	font-family: "Roboto", "Arial", sans-serif;
+}
+
+.credit__wrapper {
+	position: relative;
+
+	width: 100%;
+	height: 100%;
+
+	background: linear-gradient(180.24deg, $gradient1-black 36.31%, $gradient1-blue 99.79%);
+}
+
+.credit__inner {
+	position: relative;
+
+	width: 916px;
+	margin-left: calc((100% - 916px) / 3);
+	margin-right: calc((100% - 916px) * 2 / 3);
+	padding-top: 108px;
+	padding-bottom: 115px;
+	padding-left: 120px;
+
+	background-color: $blue;
+}
+
+.credit__title {
+	position: relative;
+
+	margin-bottom: 12px;
+
+	color: $white-middle;
+	font-size: 54px;
+	line-height: 1;
+	font-weight: 700;
+	font-style: normal;
+
+	&::before {
+		position: absolute;
+		top: -6px;
+		left: -119px;
+
+		width: 150px;
+		height: 270px;
+
+		content: "";
+
+		background: linear-gradient(183.47deg, $gradient2-black 66.3%, $gradient2-blue 97.14%);
+	}
+
+	&::after {
+		position: absolute;
+		top: -6px;
+		left: 525px;
+
+		width: 270px;
+		height: 270px;
+
+		content: "";
+
+		background: linear-gradient(183.47deg, $gradient2-black 27.26%, $gradient2-blue 97.14%);
+	}
+}
+
+.credit__desc {
+	position: relative;
+
+	margin-bottom: 34px;
+
+	color: $gray-middle;
+	font-size: 22px;
+	font-weight: 400;
+	font-style: normal;	
+	
+	&::before {
+		position: absolute;
+		top: -93px;
+		left: 562px;
+
+		width: 289px;
+		height: 182px;
+		border-radius: 10px;
+
+		content: "";
+
+		background-image: url(./images/white-card.svg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	&::after {
+		position: absolute;
+		top: -34px;
+		left: 455px;
+
+		width: 289px;
+		height: 182px;
+		border-radius: 10px;
+
+		content: "";
+
+		background-image: url(./images/black-card.svg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}
+
+.credit__btn {
+	padding: 16px 39px;
+	border-radius: 4px;
+	border: none;
+
+	background-color: $white-middle;
+	color: $black-middle;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.converter {
+	width: 1170px;
+	margin: 0 auto;
+	padding-top: 50px;
+	padding-bottom: 110px;
+
+	color: $black-middle;
+}
+
+.converter__title {
+	margin: 0;
+	margin-bottom: 55px;
+
+	font-size: 41px;
+	font-weight: 700;
+	font-style: normal;	
+}
+
+.converter__calculator {
+	margin-bottom: 100px;
+}
+
+.calculator__row {
+	display: flex;
+	justify-content: space-between;
+
+	position: relative;
+
+	&:first-child {
+		margin-bottom: 85px;
+	
+		&::before {
+			position: absolute;
+			bottom: 14px;
+			left: 50%;
+			transform: rotate(180deg) translateX(50%);
+
+			width: 50px;
+			height: 16px;
+
+			content: "";
+
+			background-image: url(./images/arrow.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	
+		&::after {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			transform: translateX(-50%);
+
+			width: 50px;
+			height: 16px;
+
+			content: "";
+
+			background-image: url(./images/arrow.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+}
+
+.calculator__value {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	flex-basis: 522px;
+}
+
+.calculator__title {
+	flex-grow: 1;
+	margin: 0;
+	margin-bottom: 24px;
+
+	font-size: 22px;
+	font-weight: 500;
+	font-style: normal;	
+}
+
+.calculator__amount {
+	width: 392px;
+	height: 60px;
+	margin-right: 15px;
+	border-radius: 4px;
+	border: 1px solid $border-black;
+
+	color: $black-pure;
+	font-size: 24px;
+	font-weight: 500;
+	font-style: normal;
+	text-align: center;
+}
+
+.calculator__currency {
+	position: relative;
+
+	align-self: stretch;
+
+	cursor: pointer;
+
+	&::before {
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		transform: translateY(-50%);
+
+		width: 18px;
+		height: 11px;
+
+		content: "";
+
+		background-image: url(./images/arrow-mini.svg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}
+
+.calculator__currency-list--from {
+	display: none;
+
+	position: absolute;
+	top: 100%;
+	right: 0;
+
+	margin-top: 2px;
+}
+
+.calculator__currency-list--to {
+	display: none;
+
+	position: absolute;
+	top: 100%;
+	right: 0;
+
+	margin-top: 2px;
+}
+
+.calculator__currency-toggle--from:checked + .calculator__currency-list--from {
+	display: block;
+}
+
+.calculator__currency-toggle--to:checked + .calculator__currency-list--to {
+	display: block;
+}
+
+.calculator__currency-group {
+	width: 115px;
+	margin: 0;
+	padding: 0;
+	padding: 3px 9px;
+	border: none;
+	border-radius: 4px;
+	border: 1px solid $border-black;
+	background-color: #fff;
+
+	font-size: 20px;
+	font-weight: 400;
+	font-style: normal;
+
+	display: grid;
+	grid-template-columns: 38px 38px;
+	column-gap: 8px;
+}
+
+.calculator__currency-label:hover {
+	color: $blue;
+	cursor: pointer;
+}
+
+.calculator__currency-type {
+	display: inline-block;
+	width: 115px;
+	vertical-align: middle;
+	padding: 0;
+	padding-left: 18px;
+	padding-right: 45px;
+	border: none;
+	border-radius: 4px;
+	border: 1px solid $border-black;
+
+	color: $black-pure;
+	font-size: 30px;
+	line-height: 60px;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: -2px;
+}
+
+.calculator__calendar {
+	position: relative;
+
+	&::after {
+		position: absolute;
+		top: 50%;
+		right: 18px;
+		transform: translateY(-50%);
+
+		width: 39px;
+		height: 42px;
+
+		content: "";
+
+		background-image: url(./images/calendar.svg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}
+
+.calculator__calendar-date {
+	width: 390px;
+	height: 60px;
+	padding-left: 117px;
+	border-radius: 4px;
+	border: 1px solid $border-black;
+
+	color: $black-pure;
+	font-size: 24px;
+	line-height: 60px;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.calculator__calendar-toggle:checked + .react-calendar {
+	display: block;
+}
+
+.calculator__btn {
+	width: 380px;
+	border-radius: 4px;
+	border: none;
+
+	color: $white-middle;
+	background-color: $blue;
+	font-size: 18px;
+	font-weight: 500;
+	font-style: normal;	
+}
+
+.history {
+	padding: 46px 70px 41px;
+	border-radius: 0px 4px 4px 4px;
+
+	background-color: $white-middle;
+}
+
+.history__title {
+	margin: 0;
+	margin-bottom: 55px;
+
+	font-size: 28px;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.history__list {
+	position: relative;
+
+	width: 1030px;
+	margin-bottom: 51px;
+
+	display: grid;
+	grid-template-columns: 379px 379px;
+	grid-template-rows: 18px 18px 18px 18px 18px;
+	grid-column-gap: 262px;
+	grid-row-gap: 28px;
+	grid-auto-flow: column;
+
+	font-size: 18px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+
+	&::after {
+		position: absolute;
+		bottom: -55px;
+		left: 50%;
+
+		height: calc(100% + 90px);
+		border: 1px solid $border-gray;
+
+		content: "";
+
+		box-shadow: 0px 4px 4px $black-pure-op-25;
+	}
+}
+
+.history__item {
+	position: relative;
+
+	display: flex;
+	justify-content: space-between;
+
+	&::after {
+		position: absolute;
+		top: 50%;
+		left: 228px;
+		transform: translateY(-50%);
+
+		width: 40px;
+		height: 16px;
+
+		content: "";
+
+		background-image: url(./images/arrow2.svg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}
+
+.history__item-from {
+	width: 100px;
+	padding-right: 65px;
+
+	flex-grow: 1;
+
+	text-align: right;
+}
+
+.history__btn {
+	width: 198px;
+	height: 51px;
+	border-radius: 4px;
+	border: none;
+
+	color: $white-middle;
+	background-color: $blue;
+	font-size: 16px;
+	font-weight: 500;
+	font-style: normal;	
+}
