@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './main.scss';
 import App from './js/app.jsx';
-import Operations from './js/mocks/operations.js';
+// import Operations from './js/mocks/operations.js';
 import {reducer} from './js/store/reducer.js';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -15,9 +15,7 @@ const store = createStore(
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App 
-			history={Operations}
-		/>
+		<App />
 	</Provider>,
 	document.querySelector(`#root`)
 );

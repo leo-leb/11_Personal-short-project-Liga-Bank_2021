@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CurrencyItemTo = (props) => {
-	const {type, to, setTo} = props;
+	const {type, to, setTo, active, setActive} = props;
 
 	const lowerType = type.toLowerCase();
 
@@ -17,7 +17,12 @@ const CurrencyItemTo = (props) => {
 					setTo({
 						...to,
 						currency: evt.target.value
-					})
+					});
+					setActive({
+						...active,
+						value: 'from'
+					});
+					document.querySelector('.calculator__currency-toggle--to').checked = false;
 				}}
 			/>
 			<label className="calculator__currency-label" htmlFor={`currency-type-` + lowerType + `-2`} data-type={type}>{type}</label>

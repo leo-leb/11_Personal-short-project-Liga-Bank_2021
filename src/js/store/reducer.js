@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         operations: action.payload
       };
+    case ActionType.CLEAR_OPERATIONS:
+      return {
+        ...state,
+        operations: action.payload
+      };
     default:
       return state;
   }

@@ -19,10 +19,15 @@ async function getCurrency(url, date, amount, from, to) {
 }
 
 const Converter = (props) => {
-	const {operations, onOperationAdd} = props;
+	const {operations, onOperationAdd, onHistoryClear} = props;
 
 	const [date, setDate] = useState(new Date());
 	const [minDate, setMinDate] = useState(dayjs().subtract(7, 'day'));
+
+	const [active, setActive] = useState({
+		value: false,
+		flag: false
+	});
 
 	const [from, setFrom] = useState({
 		value: 0,
@@ -35,24 +40,43 @@ const Converter = (props) => {
 	});
 
 	useEffect(() => {
-		if (from.currency === to.currency) {
-			setTo({
-				value: from.value,
-				currency: to.currency
-			})
-		} else {
-			getCurrency(exchangeUrl, date, from.value, from.currency, to.currency)
-			.then(res => setTo({
-				value: res,
-				currency: to.currency
-			}))
+		if (active.value === 'from') {
+			if (from.currency === to.currency) {
+				setTo({
+					value: from.value,
+					currency: to.currency
+				})
+			} else {
+				getCurrency(exchangeUrl, date, from.value, from.currency, to.currency)
+				.then(res => setTo({
+					value: res,
+					currency: to.currency
+				}))
+			}
+		} else if (active.value === 'to') {
+			if (from.currency === to.currency) {
+				setFrom({
+					value: to.value,
+					currency: from.currency
+				})
+			} else {
+				getCurrency(exchangeUrl, date, to.value, to.currency, from.currency)
+				.then(res => setFrom({
+					value: res,
+					currency: from.currency
+				}))
+			}
 		}
-	}, [from.value, from.currency, date]);
+	}, [active.value, active.flag, from.currency, to.currency, date]);
 
 	return (
 		<section className="converter">
 			<h1 className="converter__title">Конвертер валют</h1>
-			<form className="calculator converter__calculator" action="#" method="post">
+			<form
+				className="calculator converter__calculator"
+				action="#"
+				method="post"
+			>
 				<div className="calculator__row">
 					<div className="calculator__value">
 						<h3 className="calculator__title">У меня есть</h3>
@@ -64,6 +88,10 @@ const Converter = (props) => {
 								setFrom({
 									...from,
 									value: evt.target.value
+								});
+								setActive({
+									value: 'from',
+									flag: !active.flag,
 								});
 							}}
 						/>
@@ -78,7 +106,7 @@ const Converter = (props) => {
 						<div className="calculator__currency-list calculator__currency-list--from">
 							<fieldset className="calculator__currency-group">
 								<legend className="visually-hidden">Currency type</legend>
-								{Currencys.map((item, i) => <CurrencyItemFrom type={item} from={from} setFrom={setFrom} key={item + i} />)}
+								{Currencys.map((item, i) => <CurrencyItemFrom type={item} from={from} setFrom={setFrom} active={active} setActive={setActive} key={item + i} />)}
 							</fieldset>
 						</div>
 					</div>
@@ -93,6 +121,10 @@ const Converter = (props) => {
 									...to,
 									value: evt.target.value
 								});
+								setActive({
+									value: 'to',
+									flag: !active.flag,
+								});
 							}}
 						/>
 						<label htmlFor="calculator__currency-toggle--to" className="calculator__currency">
@@ -106,13 +138,16 @@ const Converter = (props) => {
 						<div className="calculator__currency-list calculator__currency-list--to">
 							<fieldset className="calculator__currency-group">
 								<legend className="visually-hidden">Currency type</legend>
-								{Currencys.map((item, i) => <CurrencyItemTo type={item} to={to} setTo={setTo} key={item + i} />)}
+								{Currencys.map((item, i) => <CurrencyItemTo type={item} to={to} setTo={setTo} active={active} setActive={setActive} key={item + i} />)}
 							</fieldset>
 						</div>
 					</div>
 				</div>
 				<div className="calculator__row">
-					<label className="calculator__calendar" htmlFor="calculator__calendar-toggle" onClick={() => console.log(nowDate)}>
+					<label
+						className="calculator__calendar"
+						htmlFor="calculator__calendar-toggle"
+					>
 						<p className="calculator__calendar-date">{date.toLocaleDateString()}</p>
 					</label>
 					<input
@@ -125,6 +160,9 @@ const Converter = (props) => {
 						minDate={minDate.toDate()}
 						maxDate={nowDate}
 						onChange={setDate}
+						onClickDay={() => {
+							document.querySelector('.calculator__calendar-toggle').checked = false;
+						}}
 						value={date}
 					/>
 					<button
@@ -137,15 +175,19 @@ const Converter = (props) => {
 								from: from,
 								to: to,
 							});
-							console.log(operations);
 						}}
 					>Сохранить результат</button>
 				</div>
 			</form>
 			<div className="history">
 				<h2 className="history__title">История конвертация</h2>
-				<History />
-				<button className="history__btn">Очистить историю</button>
+				<History operations={operations}/>
+				<button
+					className="history__btn"
+					onClick={() => {
+						onHistoryClear();
+					}}
+				>Очистить историю</button>
 			</div>
 		</section>
 	);
@@ -156,14 +198,18 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	onOperationAdd(newOperation) {
-		dispatch(ActionCreator.updateOperations(newOperation));
+	onOperationAdd(operation) {
+		dispatch(ActionCreator.updateOperations(operation));
 	},
+	onHistoryClear() {
+		dispatch(ActionCreator.clearOperations());
+	}
 });
 
 Converter.propTypes = {
 	operations: PropTypes.array.isRequired,
 	onOperationAdd: PropTypes.func.isRequired,
+	onHistoryClear: PropTypes.func.isRequired,
 };
 
 export {Converter};

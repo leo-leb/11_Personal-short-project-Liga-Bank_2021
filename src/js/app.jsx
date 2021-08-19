@@ -5,12 +5,12 @@ import CreditScreen from './fake-pages/credit-screen.jsx';
 import ContactsScreen from './fake-pages/contacts-screen.jsx';
 import QuestionsScreen from './fake-pages/questions-screen.jsx';
 import NotFoundScreen from './not-found-screen/not-found-screen.jsx';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import {Routes} from './consts';
 
-const App = (props) => {
-	const {history} = props;
+const App = () => {
+	// const {history} = props;
 
 	return (
 		<BrowserRouter>
@@ -44,8 +44,8 @@ const App = (props) => {
 	);
 }
 
-App.propTypes = {
-  history: PropTypes.array.isRequired,
-};
+// App.propTypes = {
+//   history: PropTypes.array.isRequired,
+// };
 
 export default App;

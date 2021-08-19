@@ -296,6 +296,7 @@
 .calculator__currency-type {
 	display: inline-block;
 	width: 115px;
+	height: 60px;
 	vertical-align: middle;
 	padding: 0;
 	padding-left: 18px;
@@ -398,7 +399,7 @@
 
 	&::after {
 		position: absolute;
-		bottom: -55px;
+		top: -35px;
 		left: 50%;
 
 		height: calc(100% + 90px);

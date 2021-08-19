@@ -85,14 +85,14 @@ module.exports = {
 					}
 				},
 			},
-			{
-				test: /\.(jpg|jpeg|png|svg)/,
-				use: ["file-loader"]
-			},
-			{
-				test: /\.(woff|woff2)/,
-				use: ["file-loader"]
-			}
+			// {
+			// 	test: /\.(jpg|jpeg|png|svg)/,
+			// 	use: ["file-loader"]
+			// },
+			// {
+			// 	test: /\.(woff|woff2)/,
+			// 	use: ["file-loader"]
+			// }
 		]
 	}
 };
